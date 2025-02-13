@@ -10,15 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
     executeGame();  
   });
 
-  const executeGame = () => {
+  function executeGame () {
     intro.addEventListener('click', () => {
       message.textContent = 'Espera un momento...';
       setTimeout(() => {
         intro.style.opacity = 0;
         setTimeout(() => {
+          loadScripts();
           intro.style.display = 'none';
           audio.play();
-          loadScripts();
+          isExecuting = true;
         }, 800);
       }, 1500);
     })
@@ -28,8 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function loadScripts() {
     const scripts = [
-      './scripts/obstacles.js',
-      './scripts/icon.js'
+      './scripts/icon.js',
+      './scripts/obstacles.js'
     ];
 
     scripts.forEach(scriptSrc => {

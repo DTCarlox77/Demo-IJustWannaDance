@@ -10,6 +10,7 @@ body {
   width: 30px;
   height: 30px;
   position: absolute;
+  opacity: 0;
 }
 
 .particle {
