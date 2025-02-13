@@ -1,0 +1,31 @@
+body {
+  height: 100vh;
+  margin: 0;
+  background-color: black;
+  overflow: hidden;
+}
+
+.icon {
+  background-color: #00FFFF;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #00FFFF;
+  opacity: 0.5;
+  pointer-events: none;
+  transition: opacity 0.5s ease-out;
+  z-index: -1;
+}
+
+.obstacle {
+  position: absolute;
+  background-color: #ff007f; 
+  opacity: 0.8;
+  transition: transform 0.1s ease-in-out;
+}
