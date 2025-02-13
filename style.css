@@ -26,6 +26,5 @@ body {
 .obstacle {
   position: absolute;
   background-color: #ff007f; 
-  opacity: 0.8;
   transition: transform 0.1s ease-in-out;
 }
