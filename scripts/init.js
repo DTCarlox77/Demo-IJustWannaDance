@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
           isExecuting = true;
         }, 800);
       }, 1500);
-    })
+    }, { once: true });
   }
 
   audio.load(); 

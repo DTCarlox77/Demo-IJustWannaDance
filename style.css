@@ -15,17 +15,16 @@ body {
 
 .particle {
   position: absolute;
-  width: 6px;
-  height: 6px;
   background-color: #00FFFF;
-  opacity: 0.5;
   pointer-events: none;
-  transition: opacity 0.5s ease-out;
+  opacity: 1;
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
   z-index: -1;
 }
 
 .obstacle {
   position: absolute;
   background-color: #ff007f; 
-  transition: transform 0.1s ease-in-out;
+  opacity: 1;
+  transition: transform 0.1s ease-out, opacity 0.3s ease-in;
 }

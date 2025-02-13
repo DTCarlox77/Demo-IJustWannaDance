@@ -4,7 +4,7 @@ let positionY = window.innerHeight / 2;
 icon.style.opacity = 1;
 let velocityX = 0;
 let velocityY = 0;
-const speed = 1.2;
+const speed = 1.3;
 const friction = 0.9;
 const jumpPower = 15;
 const keys = {};
@@ -16,7 +16,7 @@ let touchStartY = 0;
 
 document.addEventListener('keydown', (e) => {
   keys[e.key] = true;
-  if (e.key === ' ' && !isJumping) jump();
+  if (e.key === ' ' && !isJumping) jump(e);
 });
 
 document.addEventListener('keyup', (e) => keys[e.key] = false);
@@ -54,8 +54,12 @@ document.addEventListener('touchend', (e) => {
 function jump() {
   if (!isJumping) {
     isJumping = true;
-    velocityX += Math.sign(velocityX || 1) * jumpPower;
-    velocityY += Math.sign(velocityY || 1) * jumpPower;
+    if (keys['ArrowRight'] || keys['d'] || keys['ArrowLeft'] || keys['a']) {
+      velocityX += Math.sign(velocityX || 1) * jumpPower;
+    }
+    if (keys['ArrowUp'] || keys['w'] || keys['ArrowDown'] || keys['s']) {
+      velocityY += Math.sign(velocityY || 1) * jumpPower;
+    }
     setTimeout(() => isJumping = false, 250);
   }
 }
@@ -65,14 +69,28 @@ function createParticle(x, y) {
   particle.classList.add('particle');
   document.body.appendChild(particle);
 
-  particle.style.left = `${x - 2}px`;
+  const size = Math.random() * 6 + 4;
+  particle.style.width = `${size}px`;
+  particle.style.height = `${size}px`;
+
+  particle.style.left = `${x}px`;
   particle.style.top = `${y}px`;
 
-  setTimeout(() => {
+  const angle = Math.random() * 2 * Math.PI;
+  const speed = Math.random() * 20 + 10; 
+  const translateX = Math.cos(angle) * speed;
+  const translateY = Math.sin(angle) * speed;
+
+  requestAnimationFrame(() => {
+    particle.style.transform = `translate(${translateX}px, ${translateY}px) scale(1.5)`;
     particle.style.opacity = '0';
-    setTimeout(() => particle.remove(), 500);
-  }, 400);
+  });
+
+  setTimeout(() => {
+    particle.remove();
+  }, 500);
 }
+
 
 function update() {
 
