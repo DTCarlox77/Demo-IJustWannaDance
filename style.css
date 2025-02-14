@@ -11,6 +11,8 @@ body {
   height: 30px;
   position: absolute;
   opacity: 0;
+  z-index: 5;
+  transition: all 0.3 ease-in-out;
 }
 
 .particle {
@@ -25,6 +27,39 @@ body {
 .obstacle {
   position: absolute;
   background-color: #ff007f; 
-  opacity: 1;
+  opacity: 0.5;
   transition: transform 0.1s ease-out, opacity 0.3s ease-in;
+}
+
+.obstacle-column {
+  transition: all 0.3 ease;
+}
+
+@keyframes danger {
+  0%, 100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: #00FFFF;
+  }
+}
+
+.in-danger {
+  animation: danger 0.1s infinite;
+}
+
+.glitch {
+  position: absolute;
+  background-color: white;
+  opacity: 0.15;
+  transition: opacity 0.1s ease-out;
+}
+
+.glitch-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
 }

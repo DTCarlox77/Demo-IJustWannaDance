@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const audio = new Audio('../assets/songs/bounce_IJustWannaDance.mp3');
   const message = document.querySelector('#message');
 
-  audio.volume = 0.7;
+  audio.volume = 1;
   audio.loop = true;
 
   audio.addEventListener('canplaythrough', () => {
@@ -15,17 +15,25 @@ document.addEventListener('DOMContentLoaded', () => {
       message.textContent = 'Espera un momento...';
       setTimeout(() => {
         intro.style.opacity = 0;
+        loadScripts();
         setTimeout(() => {
-          loadScripts();
           intro.style.display = 'none';
           audio.play();
           isExecuting = true;
+          hideTitle();
         }, 800);
       }, 1500);
     }, { once: true });
   }
 
   audio.load(); 
+
+  function hideTitle() {
+    const title = document.querySelector('#title');
+    setTimeout(() => {
+      title.classList.add('hidden'); 
+    }, 2000);
+  }
 
   function loadScripts() {
     const scripts = [
