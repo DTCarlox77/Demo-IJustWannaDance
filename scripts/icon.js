@@ -21,36 +21,6 @@ document.addEventListener('keydown', (e) => {
 
 document.addEventListener('keyup', (e) => keys[e.key] = false);
 
-document.addEventListener('touchstart', (e) => {
-  let currentTime = new Date().getTime();
-  let timeDiff = currentTime - lastTouchTime;
-
-  if (timeDiff < 300) {
-    jump();
-  }
-
-  lastTouchTime = currentTime;
-
-  touchStartX = e.touches[0].clientX;
-  touchStartY = e.touches[0].clientY;
-});
-
-document.addEventListener('touchend', (e) => {
-  let touchEndX = e.changedTouches[0].clientX;
-  let touchEndY = e.changedTouches[0].clientY;
-
-  let deltaX = touchEndX - touchStartX;
-  let deltaY = touchEndY - touchStartY;
-
-  if (Math.abs(deltaX) > Math.abs(deltaY)) {
-    if (deltaX > 30) velocityX += speed; 
-    else if (deltaX < -30) velocityX -= speed;
-  } else {
-    if (deltaY > 30) velocityY += speed;
-    else if (deltaY < -30) velocityY -= speed;
-  }
-});
-
 function jump() {
   if (!isJumping) {
     isJumping = true;

@@ -21,7 +21,7 @@ function createObstacle() {
 function beatEffect() {
   document.querySelectorAll('.obstacle').forEach(obstacle => {
     obstacle.style.transform = 'scale(1.2)';
-    setTimeout(() => obstacle.style.transform = 'scale(1)', 100);
+    setTimeout(() => obstacle.style.transform = 'scale(1)', 120);
   });
 }
 
